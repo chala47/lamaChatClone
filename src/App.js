@@ -1,12 +1,12 @@
-
-import './style.scss'
-import SignIn from './pages/SignIn';
-import { Home } from './pages/Home';
-
+import "./style.scss";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRoute from "./route";
 function App() {
   return (
     <div className="App">
-    <Home/>
+      <Router>
+        <AppRoute />
+      </Router>
     </div>
   );
 }

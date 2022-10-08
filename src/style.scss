@@ -186,89 +186,149 @@
         flex: 2;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-       .header{
-        background-color: #2f2d52;
-        height: 50px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 15px;
-        color: white;
-        .title {
-            font-weight: bold;
-            padding: 15px 5px;
-            color: white;
-        }
-        .setting{
+
+
+        .header {
+            background-color: #2f2d52;
+            height: 50px;
             display: flex;
             flex-direction: row;
-            img {
-                padding: 15px 5px;
-                height: 12px;
-                width: 12px;
-                border-radius: 50%;
-                object-fit: cover;
+            justify-content: space-between;
+            padding: 15px;
+            color: white;
 
-            }
-        }
-       }
-       .message{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        background-color: white;
-        height: 65px;
-        input{
-            padding:15px 2px;
-            border: none;
-            outline: none;
-        }
-        .attach{
-            display: flex;
-            padding:15px 25px;
-            gap:5px;
-            button{
-                background-color: #7b96ec;
-                color: #ddddf7;
-                font-size: 13px;
+            .title {
                 font-weight: bold;
-                width: 75px;
-                border: none;
-                cursor: pointer; 
+                padding: 15px 5px;
+                color: white;
             }
-        }
-       }
-       .body{
-        .message{
-            display: flex;  
-            width: 45%;
-            gap: 5px;
-            background-color: inherit;
-            margin: 25px 5px;
-            .profile{
+
+            .setting {
                 display: flex;
-                flex-direction: column;
-                padding: 5px;
+                flex-direction: row;
+
                 img {
-                    background-color: white;
-                    height: 35px;
-                    width: 35px;
-                    margin-left: 15px;
+                    padding: 15px 5px;
+                    height: 12px;
+                    width: 12px;
                     border-radius: 50%;
                     object-fit: cover;
-                  
+
+                }
+            }
+        }
+
+        .message {
+            flex:1;
+            background-color: white;
+            .input {
+                display: flex;
+                
+                input{
+                    flex:2;
+                    padding: 15px 2px;
+                    border: none;
+                    outline: none;
+                }
+                .attach {
+                    display: flex;
+                    padding: 15px 25px;
+                    gap: 5px;
+    
+                    button {
+                        background-color: #7b96ec;
+                        color: #ddddf7;
+                        font-size: 13px;
+                        font-weight: bold;
+                        width: 75px;
+                        border: none;
+                        cursor: pointer;
+                    }
                 }
             }
 
-            .chatmessage{
-                margin: 10px 5px ;
-                padding: 12px 5px;
-                background-color: white;
-                
-            }
+    
         }
 
-       }
+        .body {
+            flex: 11;
+            overflow: auto;
+            overflow-x: hidden;
+
+            &::-webkit-scrollbar {
+                width: 0.2rem;
+                height: 0.2rem;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: darkgray;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: inherit;
+            }
+
+            .message {
+                display: flex;
+                background-color: inherit;
+                margin: 25px 5px;
+                flex-direction: row;
+                
+
+                .profile {
+                    display: flex;
+                    flex-direction: column;
+                    color: gray;
+                    padding: 5px;
+                    font-weight: 300;
+
+                    img {
+                        background-color: white;
+                        height: 40px;
+                        width: 40px;
+                        margin-left: 10px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+                }
+
+                .messageContent {
+                    max-width: 80%;
+                    display: flex;
+                    flex-direction: column;
+                    padding: 15px;
+                    p {
+                        background-color: white;
+                        margin-top: 0;
+                        padding: 10px 20px;
+                        border-radius: 0px 10px 10px 10px;
+                        max-width: max-content;
+                    }
+
+                    img {
+                      
+                      width: 50%;  
+                    }
+                }
+
+            &.owner {
+                
+                flex-direction: row-reverse;
+                .messageContent {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    p {
+                        background-color: darkcyan;
+                        margin-top: 0;
+                        padding: 10px 20px;
+                        border-radius: 10px 0px 10px 10px;
+                        max-width: max-content;
+                    }
+                }
+            }
+            }
+
+        }
     }
 }
