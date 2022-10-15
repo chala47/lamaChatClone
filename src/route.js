@@ -14,7 +14,6 @@ const route = () => {
           <Route path="/">
             <Route index element={<PrivateRoute> <Home /></PrivateRoute>} />
             <Route path="login" element={<SignIn />} />
-
             <Route path="register" element={<Register />} />
           </Route>
         </Routes>

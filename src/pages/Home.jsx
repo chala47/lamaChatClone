@@ -1,7 +1,7 @@
 import React from "react";
 import { Chat } from "../Components/Chat";
 import { SideBar } from "../Components/SideBar";
-import Register from "./Register";
+
 
 export const Home = () => {
   return (

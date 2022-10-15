@@ -14,14 +14,10 @@ const SignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential)=>{
       const user = userCredential.user;
-      console.log(user);
-      navigate('/home')
+      navigate('/')
     })  
-    .catch((error) => {
-      setError(error.message)
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
+    .catch((err) => {
+      setError(err.message.split('(')[1].replace(')',''))
     });
   };
   return (
@@ -36,7 +32,7 @@ const SignIn = () => {
             <button type="submit">Sign in</button>
             <span>{error}</span>
           </form>
-          <p>you do have an account <Link to='/login'>Sign In</Link></p>
+          <p>you do have an account <Link to='/register'>Register</Link></p>
         </div>
       </div>
     </>
