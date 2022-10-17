@@ -1,7 +1,8 @@
 import React,{useState,useContext} from "react";
-import { Query,doc, setDoc,where,collection, query, updateDoc, serverTimestamp, getDoc, getDocs } from "firebase/firestore";
+import { doc, setDoc,where,collection, query, updateDoc, serverTimestamp, getDoc, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { AuthContext } from './user/userContext';
+import profile from '../contents/images/profile.png';
 export const Serach = () => {
   const [search,setSearch]=useState('')
   const [user,setuser]=useState('');
@@ -13,7 +14,7 @@ export const Serach = () => {
       const q=query(dbRef,where('displayName','==',name));
       try {
         const querySnapShot = await getDocs(q);
-        console.log(querySnapShot);
+      
         querySnapShot.forEach((doc) => {
           setuser(doc.data());
         });
@@ -42,7 +43,7 @@ export const Serach = () => {
         [combinedId+".userInfo"]:{
            uid:user.uid,
            displayName:user.displayName,
-           photoURL:user.photoURL
+           photoURL:user.photoURL?user.photoURL:null
         },
         [combinedId+".date"]:serverTimestamp()
       })
@@ -51,7 +52,7 @@ export const Serach = () => {
         [combinedId+".userInfo"]:{
            uid:currentUser.uid,
            displayName:currentUser.displayName,
-           photoURL:currentUser.photoURL
+           photoURL:currentUser.photoURL?currentUser.photoURL:null
         },
         [combinedId+'.date']:serverTimestamp()
       })
@@ -73,7 +74,7 @@ export const Serach = () => {
       {user && (
         <div className="chats" >
           <div className="userChat" onClick={onSelect}>
-            <img src={user.photoURL} alt="" />
+            <img src={user.photoURL?user.photoURL:profile} alt="" />
             <div className="userChatInfo">
               <span>{user.displayName}</span>
             </div>

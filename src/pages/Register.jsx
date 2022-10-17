@@ -46,7 +46,13 @@ const Register = () => {
           }
         )
       }else{
-        updateProfile(userResource.user,{displayName:name});
+        await updateProfile(userResource.user,{displayName:name});
+        await setDoc(doc(db, "users", userResource.user.uid), {
+          uid:userResource.user.uid,
+          displayName:name,
+          email: email,
+        })
+        await setDoc(doc(db, "userChats", userResource.user.uid), {})
       }
       navigate('/')   
     } catch (err) {

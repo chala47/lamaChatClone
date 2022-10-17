@@ -1,14 +1,15 @@
 import React from "react";
-import Chats from "./Chats";
 import { Navbar } from "./Navbar";
 import { Serach } from "./Serach";
+import Chats from "./Chats";
 
-export const SideBar = () => {
+
+export const SideBar = ({open,toggle}) => {
   return (
-    <div className="sidebar">
+    <div className={open?"sidebar":"sidebar closed"}>
       <Navbar />
       <Serach />
-      <Chats/>
+      <Chats toggle={toggle}/>
 
     </div>
   );

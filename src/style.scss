@@ -111,7 +111,12 @@
     flex: 1;
     background-color: #3e3c61;
     position: relative;
-    
+    &.closed{
+      @include mobile{
+        flex: none;
+        display: none;
+      }   
+    }
     .navbar {
       background-color: #2f2d52;
       align-items: center;
@@ -120,21 +125,11 @@
       height: 50px;
       padding: 10px;
       color: white;
-      @include mobile {
-        justify-content: end;
-      }
-      @include tablet {
-        justify-content: end;
-      }
+
       .logo {
         font-weight: bold;
         padding-left: 5px;
-        @include mobile {
-          display: none;
-        }
-        @include tablet {
-          display: none;
-        }
+
       }
 
       .user {
@@ -224,26 +219,53 @@
     flex: 2;
     display: flex;
     flex-direction: column;
-    @include mobile {
-        flex: 1;
-      }
-      @include tablet {
-        flex: 1;
-      }
+    @include mobile{
+      flex: none;
+      display: none;
+    }
+ 
+    &.closed{
+      @include mobile{
+        display: flex;
+        width: 100%;
+      }   
+    }
     .header {
       background-color: #2f2d52;
-      height: 50px;
+      height: 40px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       padding: 15px;
       color: white;
 
+      .back {
+        display: none;
+        @include mobile {
+          display: flex;
+          padding: 20px 5px;
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+      .chatuser{
+        display: flex;
+
+        img {
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
       .title {
         font-weight: bold;
-        padding: 15px 5px;
+        padding: 15px 15px;
         color: white;
       }
+      }
+
 
       .setting {
         display: flex;
@@ -365,5 +387,11 @@
         }
       }
     }
+    // &.closed {
+    //   @include mobile{
+    //     display: flex;
+    //   }
+    // }
   }
+  
 }

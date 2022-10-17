@@ -3,11 +3,14 @@ import { db } from "../firebase";
 import React, { useContext, useState } from "react";
 import attach from "../contents/images/attach.png";
 import img from "../contents/images/img.png";
-import { AuthContext } from "./user/userContext";
+
 import { v4 as uuid } from "uuid";
-import { ChatContext } from "./user/ChatContext";
+
 import { storage } from "../firebase";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { ChatContext } from "./user/ChatContext";
+import { AuthContext } from "./user/userContext";
+
 export const Input = () => {
   const currentUser = useContext(AuthContext);
   const { data } = useContext(ChatContext);
@@ -25,7 +28,7 @@ export const Input = () => {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-            console.log('downloadURL',downloadURL)
+        
             await updateDoc(doc(db, "chats", data.chatId), {
               messages: arrayUnion({
                 id: uuid(),

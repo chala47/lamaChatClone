@@ -3,8 +3,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { db } from "../firebase";
 import { ChatContext } from "./user/ChatContext";
 import { AuthContext } from "./user/userContext";
-
-const Chats = () => {
+import profile from '../contents/images/profile.png'
+const Chats = ({open,toggle}) => {
   const currentUuser = useContext(AuthContext);
   const {data,dispatch}=useContext(ChatContext);
   const [chat, setChat] = useState();
@@ -28,6 +28,7 @@ const Chats = () => {
 
   const onSelect=(chatuser)=>{
      dispatch({type:'CHANGE_USER',payload:chatuser})
+     toggle();
   }
   
   return (
@@ -37,7 +38,7 @@ const Chats = () => {
         <div className="chats">
           {Object.keys(chat).map(uid => {
             return <div className="userChat" onClick={()=>onSelect(chat[uid].userInfo)}>
-              <img src={chat[uid].userInfo.photoURL} alt="" />
+              <img src={chat[uid].userInfo.photoURL?chat[uid].userInfo.photoURL:profile} alt="" />
               <div className="userChatInfo">
                 <span>{chat[uid].userInfo.displayName}</span>
                 <p>{chat[uid]?.lastMessage}</p>

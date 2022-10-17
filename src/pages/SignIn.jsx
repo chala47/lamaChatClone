@@ -13,7 +13,6 @@ const SignIn = () => {
 
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential)=>{
-      const user = userCredential.user;
       navigate('/')
     })  
     .catch((err) => {
@@ -24,7 +23,7 @@ const SignIn = () => {
     <>
       <div className="fromContainer">
         <div className="fomrWrapper">
-          <span className="logo">Lama Chant</span>
+          <span className="logo">C-Chant</span>
           <span className="titile">Login</span>
           <form onSubmit={onSubmit}>
             <input name="email" type="text" placeholder="email" />

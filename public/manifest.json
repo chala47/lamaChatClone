@@ -1,6 +1,6 @@
 {
-  "short_name": "Lama Chat",
-  "name": "Lama Chat",
+  "short_name": "C-Chat",
+  "name": "C-Chat",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,12 +10,12 @@
     {
       "src": "logo.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "92x107"
     },
     {
       "src": "logo.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "92x107"
     }
   ],
   "start_url": ".",
